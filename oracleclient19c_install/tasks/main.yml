@@ -4,6 +4,19 @@
     msg:
       - 'Oracle Client19c Software Installation in progress at {{ansible_date_time.iso8601}}:'
 
+- name: Install required packages
+  yum: name={{ item }} state=present
+  with_items: '{{ packages_list }}'
+
+- name: Create groups
+  group: name={{ item.name }} gid={{ item.gid }} state=present
+  with_items:
+   - { name: oinstall, uid: 54321 }
+   - { name: dba, uid: 54322 }
+
+- name: Create user
+  user: name=oracle groups=groups: ['oinstall', 'dba'] password="{{ oracle_os_user_pass | password_hash(salt=root_password_salt) }}" system=yes 
+
 - name: create required directories
   when: inventory_hostname in groups['ora-x1']
   remote_user: "{{ root_user }}"
