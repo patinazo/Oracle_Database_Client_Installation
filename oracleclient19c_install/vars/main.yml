@@ -1,3 +1,19 @@
+packages_list:
+  - 'binutils'
+  - 'bc'
+  - 'compat-libcap1'
+  - 'compat-libstdc++' 
+  - 'elfutils-libelf'
+  - 'elfutils-libelf-devel'
+  - 'fontconfig-devel'
+  - 'glibc'
+  - 'glibc-devel'
+  - 'ksh'
+  - 'libaio'
+  - 'libaio-devel'
+  - 'libXrender'
+  - 'libX11'
+  
 oracle_install_group:              "oinstall"
 root_directory:                     "/u01"
 stage_dir:                          "/u01/stage"
