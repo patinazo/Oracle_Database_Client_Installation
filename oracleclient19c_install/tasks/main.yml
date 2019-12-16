@@ -15,7 +15,7 @@
    - { name: dba, uid: 54322 }
 
 - name: Create user
-  user: name=oracle groups=groups: ['oinstall', 'dba'] password="{{ oracle_os_user_pass | password_hash(salt=root_password_salt) }}" system=yes 
+  user: name=oracle groups=['oinstall', 'dba'] password="{{ oracle_os_user_pass | password_hash(salt=root_password_salt) }}" system=yes 
 
 - name: create required directories
   when: inventory_hostname in groups['ora-x1']
