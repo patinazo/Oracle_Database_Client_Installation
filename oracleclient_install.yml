@@ -1,5 +1,10 @@
-- hosts: ora-x1
-  user: root
-  
+- hosts: linuxtemplate
+  vars_files:
+  # User defined variables for infrastructure
+   - main_vars.yml  
   roles:
-   - oracleclient19c_install
+   - role: oracleclient19c_install
+   - role: oraclesoft
+     become_method: su
+     su_user: '{{ oracle_user }}'
+     ansible_become_pass: '{{ oracle_os_user_pass }}'

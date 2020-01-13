@@ -15,11 +15,12 @@ packages_list:
   - 'libX11'
 root_password_salt: "12345678"  
 oracle_install_group:              "oinstall"
-root_directory:                     "/u01"
-stage_dir:                          "/u01/stage"
-oracle_base:                        /u01/app/oracle
-oracleclient_home:                  /u01/app/oracle/product/19.3.0
-oracleclient_inventory:             /u01/app/oraInventory
+root_directory:                     "/preproduccion"
+stage_dir:                          "{{ root_directory }}/stage"
+oracle_base:                        "{{ root_directory }}/soft/oracle"
+oracleclient_home:                  "{{ oracle_base }}/product/19.0.0/client_1"
+oracleclient_inventory:             "{{ oracle_base }}/oraInventory
+env_directory:                      "/etc/"
 oracle_user:                        oracle
 root_user:                          root
 oraclntsoft:                   "oracleclient.soft"    

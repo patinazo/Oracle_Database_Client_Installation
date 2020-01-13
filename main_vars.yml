@@ -1,0 +1,42 @@
+packages_list:
+  - 'unzip'
+  - 'binutils'
+  - 'bc'
+  - 'compat-libcap1'
+  - 'compat-libstdc++-33.x86_64' 
+  - 'elfutils-libelf'
+  - 'elfutils-libelf-devel'
+  - 'fontconfig-devel'
+  - 'glibc'
+  - 'glibc-devel'
+  - 'ksh'
+  - 'libaio'
+  - 'libaio-devel'
+  - 'libXrender'
+  - 'libX11'
+oracle_os_user_pass: "pruebas"  
+root_password_salt: "12345678"  
+oracle_install_group1:              "oinstall"
+oracle_install_group2:              "dba"
+root_directory:                     "/preproduccion"
+stage_dir:                          "{{ root_directory }}/stage"
+oracle_base:                        "{{ root_directory }}/soft/oracle"
+oracleclient_home:                  "{{ oracle_base }}/product/19.0.0/client_1"
+oracleclient_inventory:             "{{ oracle_base }}/oraInventory"
+env_directory:                      "/etc/"
+oracle_user:                        oracle
+root_user:                          root
+oraclntsoft:                   "oracleclient.soft"    
+oracleclient_installType:           Administrator
+tns_path: "{{ oracleclient_home }}/network/admin"
+tns_file: "{{ tns_path }}/tnsnames.ora"
+sqlnet_file: "{{ tns_path }}/sqlnet.ora"
+portnum:                         pass_dbport
+db_name:                    pass_dbuname
+oracle_sid:                    pass_dbname
+dbhost:                         pass_dbhost
+
+env_clh:
+  ORACLE_HOME: "{{ oracleclient_home }}"
+  ORACLE_BASE: "{{ oracle_base }}"
+  PATH: "{{ oracleclient_home }}/bin:$PATH:/bin:/usr/bin::/usr/ccs/bin"
