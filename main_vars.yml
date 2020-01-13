@@ -25,6 +25,7 @@ oracleclient_home:                  "{{ oracle_base }}/product/19.0.0/client_1"
 oracleclient_inventory:             "{{ oracle_base }}/oraInventory"
 env_directory:                      "/etc/"
 oracle_user:                        oracle
+oracle_env:                        "/home/{{ oracle_user }}/env"
 root_user:                          root
 oraclntsoft:                   "oracleclient.soft"    
 oracleclient_installType:           Administrator

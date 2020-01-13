@@ -30,9 +30,13 @@
     - "{{ oracleclient_inventory }}"
     - "{{ oracle_base }}"
     - "{{ stage_dir }}"
+    - "{{ oracle_env }}"
     - "{{ oracleclient_home }}"
   tags:
    - oc19c_createinventory
+# - name: Copy file setEnv.sh
+#   template: src=setEnv.sh.j2 dest="{{ oracle_env }}/setEnv.sh" backup=yes
+
 - name: Copy file oraInst.loc
   #template: src=oraInst.loc dest="{{ oracleclient_inventory }}" backup=yes
   template: src=oraInst.loc dest="{{ env_directory }}" backup=yes

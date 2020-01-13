@@ -1,0 +1,8 @@
+# Oracle Settings
+export TMP=/tmp
+export TMPDIR=$TMP
+export ORACLE_BASE="{{ oracle_base }}"
+export ORACLE_HOME="{{ oracleclient_home }}"
+export PATH="{{ oracleclient_home }}/bin:$PATH"
+export LD_LIBRARY_PATH="{{ oracleclient_home }}/lib:/lib:/usr/lib"
+umask 022
