@@ -92,19 +92,13 @@
 #     msg: "{{ ocl_softversion.stdout_lines }}" 
 #   when: inventory_hostname in groups['ora-x1']
 
-# - name: set profile entry for the client software
-#   when: inventory_hostname in groups['ora-x1']
-#   remote_user: "{{ root_user }}"
-#   become: yes
-#   become_user: "{{ oracle_user }}"
-#   lineinfile:
-#    dest: "/home/oracle/.bash_profile"
-#    regexp: "^{{ item.start }}"
-#    line: "{{ item.start }}{{ item.end }}"
-#    insertbefore: "export PATH"
-#   with_items:
-#    - { start: "ORACLE_HOME=", end: "{{ oracleclient_home }}" }
-#    - { start: "PATH=", end: "{{ oracleclient_home }}/bin:$PATH:/bin:/usr/bin::/usr/ccs/bin" }
+- name: Create profile bash_profile
+  lineinfile:
+   dest: "/home/oracle/.bash_profile"
+   line: "{{ item.start }}"
+   insertafter: "export PATH"
+  with_items:
+  - { start: ". /home/oracle/env/setEnv.sh"}
 
 # - name: Create tnsnames.ora and sqlnet.ora path if not present
 #   when: inventory_hostname in groups['ora-x1']
